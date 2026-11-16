@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canan (Wipavee Pinyamuksapong) — UX/UI, Product &amp; WordPress Portfolio 2026</title>
+  <meta name="description" content="Portfolio of Canan (Wipavee Pinyamuksapong) — UX/UI Designer, Product Designer &amp; Frontend WordPress Developer with 5 years of experience." />
+
+  <!-- Tailwind CSS 3.4.17 -->
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            cream: '#FAF7F2',
+            royal: '#1849D6',
+            coral: '#FF5D47',
+            limepill: '#D9ED92',
+            periwinkle: '#C7D2FE',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      background-color: #FAF7F2;
+      color: #18181B;
+      overflow-x: hidden;
+    }
+
+    .bg-grid-paper {
+      background-color: #FAF7F2;
+      background-image:
+        linear-gradient(to right, #EDE8DF 1px, transparent 1px),
+        linear-gradient(to bottom, #EDE8DF 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .bg-pink-grid {
+      background-color: #FFEAF2;
+      background-image:
+        linear-gradient(to right, #F9D5E5 1px, transparent 1px),
+        linear-gradient(to bottom, #F9D5E5 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+
+    /* Keyframe Movements */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes floatReverse {
+      0%, 100% { transform: translateY(0px) rotate(1.5deg); }
+      50% { transform: translateY(9px) rotate(2.5deg); }
+    }
+    @keyframes badgeWiggle {
+      0%, 100% { transform: rotate(-7deg); }
+      50% { transform: rotate(-2deg); }
+    }
+    @keyframes pulseSparkle {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.18) rotate(14deg); }
+    }
+    @keyframes marqueeTrack {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes cursorBounce {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-7px, -7px); }
+    }
+
+    .anim-float { animation: floatSlow 4.2s ease-in-out infinite; }
+    .anim-float-rev { animation: floatReverse 4.8s ease-in-out infinite; }
+    .anim-wiggle { animation: badgeWiggle 3.8s ease-in-out infinite; }
+    .anim-sparkle { animation: pulseSparkle 3.2s ease-in-out infinite; }
+    .anim-cursor { animation: cursorBounce 2.4s ease-in-out infinite; }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeTrack 24s linear infinite;
+    }
+    .marquee-wrap:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Interactive Folder Cards */
+    .folder-card {
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), filter 0.38s ease;
+    }
+    .folder-card:hover {
+      transform: translateY(-12px);
+      filter: drop-shadow(0 18px 24px rgba(17, 24, 39, 0.14));
+    }
+    .folder-peek-item {
+      transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .folder-card:hover .folder-peek-left {
+      transform: translateY(-18px) rotate(-10deg) scale(1.04);
+    }
+    .folder-card:hover .folder-peek-center {
+      transform: translateY(-22px) scale(1.06);
+    }
+    .folder-card:hover .folder-peek-right {
+      transform: translateY(-18px) rotate(10deg) scale(1.04);
+    }
+
+    /* Work & Product Cards */
+    .lift-card {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+    }
+    .lift-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 32px -8px rgba(17, 24, 39, 0.14);
+    }
+
+    /* Tool Dock Icons */
+    .tool-pill {
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .tool-pill:hover {
+      transform: translateY(-7px) scale(1.14);
+    }
+
+    /* Section Flash on Jump */
+    @keyframes secFlash {
+      0% { box-shadow: 0 0 0 0 rgba(24, 73, 214, 0); }
+      30% { box-shadow: 0 0 0 8px rgba(24, 73, 214, 0.18); }
+      100% { box-shadow: 0 0 0 0 rgba(24, 73, 214, 0); }
+    }
+    .section-flash {
+      animation: secFlash 1.2s ease-out;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-blue-200 selection:text-zinc-900">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="w-full bg-[#BCE3FA] border-b border-zinc-900/10 py-2 px-4 text-center">
+    <p class="font-mono text-[11px] sm:text-xs font-bold tracking-wider text-slate-900">
+      ✨ AVAILABLE FOR UX/UI, PRODUCT &amp; WORDPRESS PROJECTS · 5 YEARS OF CRAFT · CLICK ANY FOLDER TO EXPLORE ↓
+    </p>
+  </div>
+
+  <!-- STICKY FLOATING NAVBAR -->
+  <header class="sticky top-3 z-40 px-4 sm:px-6 lg:px-10 mt-4">
+    <nav class="max-w-7xl mx-auto bg-white/95 backdrop-blur-md border-[1.5px] border-zinc-900 rounded-2xl shadow-sm px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+      <a href="#sec-top" class="flex items-center gap-2.5 shrink-0 group">
+        <span class="font-serif text-2xl sm:text-3xl font-bold text-zinc-900 tracking-tight">Canan<span class="text-rose-500">.</span></span>
+        <span class="hidden sm:inline-flex items-center px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-[11px] font-bold">
+          5 Yrs Experience
+        </span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-6 text-sm font-semibold text-zinc-800">
+        <a href="#sec-about" class="hover:text-royal transition-colors">About Me</a>
+        <a href="#sec-folders" class="text-royal relative pb-1">
+          Interactive Folders
+          <svg class="absolute left-0 -bottom-0.5 w-full h-1.5" viewBox="0 0 120 6" preserveAspectRatio="none">
+            <path d="M0,3 Q15,0 30,3 T60,3 T90,3 T120,3" fill="none" stroke="#F43F5E" stroke-width="2" />
+          </svg>
+        </a>
+        <a href="#sec-uxui" class="hover:text-royal transition-colors">UX/UI Works</a>
+        <a href="#sec-sitemap" class="hover:text-royal transition-colors">Sitemap &amp; CI</a>
+        <a href="#sec-wordpress" class="hover:text-royal transition-colors">Websites</a>
+        <a href="#sec-products" class="hover:text-royal transition-colors">Products</a>
+        <a href="#sec-graphics" class="hover:text-royal transition-colors">Campaigns</a>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <a href="#sec-footer" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border-[1.5px] border-zinc-900 text-xs sm:text-sm font-bold text-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">
+          <span class="w-2.5 h-2.5 rounded-full bg-pink-300 inline-block"></span>
+          Let's Talk ↗
+        </a>
+        <button id="mobile-menu-btn" type="button" aria-label="Toggle Menu" class="lg:hidden p-2 rounded-xl border border-zinc-300 hover:bg-zinc-100 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden max-w-7xl mx-auto mt-2 bg-white border-[1.5px] border-zinc-900 rounded-2xl shadow-lg p-4">
+      <div class="grid grid-cols-2 gap-2 text-sm font-semibold text-zinc-800">
+        <a href="#sec-about" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-zinc-100">About Me</a>
+        <a href="#sec-folders" class="mobile-nav-link px-3 py-2.5 rounded-xl bg-blue-50 text-royal">Interactive Folders</a>
+        <a href="#sec-uxui" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-zinc-100">01 · UX/UI Works</a>
+        <a href="#sec-sitemap" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-zinc-100">02 · Sitemap &amp; IA</a>
+        <a href="#sec-moodtone" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-zinc-100">03 · Mood &amp; Tone</a>
+        <a href="#sec-wordpress" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-zinc-100">04 · WordPress Web</a>
+        <a href="#sec-products" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-zinc-100">05 · Product Design</a>
+        <a href="#sec-graphics" class="mobile-nav-link px-3 py-2.5 rounded-xl hover:bg-zinc-100">06 · Graphic Design</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================= -->
+  <!-- SECTION 1: HERO BANNER (HD 3D Avatar + Tilted Contact ID Card)          -->
+  <!-- ======================================================================= -->
+  <section id="sec-top" class="bg-grid-paper pt-8 pb-16 sm:pt-12 sm:pb-24 px-4 sm:px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+      <!-- Left Hero Column -->
+      <div class="lg:col-span-7 relative">
+        <!-- 2026 Edition Oval Badge + Loop Arrow -->
+        <div class="flex items-center gap-3 mb-4">
+          <div class="anim-wiggle inline-flex flex-col items-center justify-center px-5 py-2 rounded-full bg-white border-2 border-royal text-royal shadow-xs">
+            <span class="font-serif text-xs sm:text-sm font-bold leading-tight">2026</span>
+            <span class="font-serif text-xs font-semibold leading-tight">Edition</span>
+          </div>
+          <svg class="w-16 h-10 text-royal hidden sm:block" viewBox="0 0 70 44" fill="none">
+            <path d="M4,16 C24,10 34,30 20,35 C8,39 12,18 40,22 L60,38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <polyline points="52,38 61,39 59,30" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="anim-sparkle text-royal text-2xl select-none ml-auto sm:ml-6">✦</span>
+        </div>
+
+        <!-- Giant Expressive "Port folio" Display -->
+        <div class="relative inline-block mb-6">
+          <div class="relative">
+            <span class="absolute left-1 top-1/2 -translate-y-1/2 w-[92%] h-8 sm:h-11 bg-pink-200/80 rounded-lg -rotate-2 -z-0"></span>
+            <h1 class="relative z-10 font-serif font-bold text-royal text-7xl sm:text-8xl xl:text-[132px] leading-[0.88] tracking-tight -rotate-2">
+              Port
+            </h1>
+          </div>
+
+          <div class="relative mt-1 sm:mt-2 pl-6 sm:pl-12 flex flex-wrap items-center gap-3">
+            <span class="font-serif font-bold text-royal text-7xl sm:text-8xl xl:text-[132px] leading-[0.88] tracking-tight -rotate-2">
+              folio
+            </span>
+            <div class="anim-float inline-flex items-center px-4 py-2 rounded-full bg-coral text-white text-xs sm:text-sm font-bold shadow-md rotate-3">
+              UX/UI &amp; WordPress · 5 Yrs
+            </div>
+            <!-- Yellow Starburst -->
+            <svg class="anim-sparkle w-10 h-10 sm:w-12 sm:h-12 text-yellow-400" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+              <line x1="30" y1="6" x2="30" y2="54"/>
+              <line x1="6" y1="30" x2="54" y2="30"/>
+              <line x1="13" y1="13" x2="47" y2="47"/>
+              <line x1="47" y1="13" x2="13" y2="47"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Intro Tag & Headline -->
+        <div class="space-y-4 max-w-2xl">
+          <div class="inline-block bg-[#BCE3FA] px-3 py-1.5 rounded-md">
+            <span class="font-mono text-[11px] sm:text-xs font-bold text-slate-900">
+              HI, I'M CANAN (WIPAVEE PINYAMUKSAPONG)
+            </span>
+          </div>
+          <h2 class="text-xl sm:text-2xl lg:text-[26px] font-bold text-zinc-900 leading-snug">
+            I design &amp; build digital products that are intuitive, scalable, and thoughtfully crafted.
+          </h2>
+          <p class="text-sm sm:text-base text-zinc-600 leading-relaxed">
+            5 years of experience turning complex flows into high-converting UX/UI designs, physical product experiences, and responsive WordPress websites.
+          </p>
+
+          <!-- Dual Hero CTAs -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#sec-folders" class="inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-zinc-900 text-white text-sm font-bold shadow-md hover:bg-royal transition-colors">
+              <span>Explore My Folders</span>
+              <span class="text-yellow-300">↓</span>
+            </a>
+            <a href="#sec-uxui" class="group inline-flex flex-col text-sm sm:text-base font-bold text-zinc-900 hover:text-royal transition-colors">
+              <span>View Case Studies ↗</span>
+              <span class="h-[3px] w-full bg-royal rounded-full mt-1 group-hover:scale-x-105 transition-transform origin-left"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Hero Column: Periwinkle Blob + HD 3D Avatar + Floating Contact Card -->
+      <div class="lg:col-span-5 relative flex flex-col items-center">
+        <div class="relative w-full max-w-[440px]">
+          <!-- Lime Smiley Sticker -->
+          <div class="anim-float absolute -top-2 left-3 sm:left-6 z-20 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-lime-400 shadow-md flex items-center justify-center border border-zinc-900/10">
+            <svg class="w-8 h-8" viewBox="0 0 40 40" fill="none">
+              <circle cx="14" cy="15" r="2.2" fill="#18181B"/>
+              <circle cx="26" cy="15" r="2.2" fill="#18181B"/>
+              <path d="M12 23 Q20 31 28 23" stroke="#18181B" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- Green Starburst Top-Right -->
+          <svg class="anim-sparkle absolute -top-4 right-2 z-20 w-10 h-10 text-lime-500" viewBox="0 0 50 50" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <line x1="25" y1="5" x2="25" y2="45"/>
+            <line x1="5" y1="25" x2="45" y2="25"/>
+            <line x1="11" y1="11" x2="39" y2="39"/>
+            <line x1="39" y1="11" x2="11" y2="39"/>
+          </svg>
+
+          <!-- Periwinkle Organic Blob + HD 3D Avatar Cutout -->
+          <div class="relative mx-auto w-[300px] h-[340px] sm:w-[370px] sm:h-[400px] flex items-end justify-center">
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 420 440" fill="none">
+              <path d="M 45,30 C 170,-10 385,40 410,200 C 430,315 360,395 290,420" stroke="#1849D6" stroke-width="1.8" fill="none"/>
+              <path d="M 62,56 C 145,22 335,32 382,110 C 425,180 415,345 352,404 C 290,460 95,452 46,382 C 2,318 4,82 62,56 Z" fill="#C7D2FE"/>
+            </svg>
+            <img
+              src="./assets/canan_avatar_cutout.png"
+              alt="Canan 3D Avatar Portrait"
+              class="relative z-10 w-[84%] max-h-[370px] object-contain drop-shadow-xl"
+            />
+          </div>
+
+          <!-- Floating Tilted Contact ID Card -->
+          <div class="anim-float-rev relative z-20 -mt-12 sm:-mt-16 mx-auto w-[94%] bg-white border border-zinc-200 rounded-2xl shadow-xl p-5 sm:p-6">
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <div class="relative">
+                <span class="absolute left-0 bottom-0.5 w-full h-3 bg-yellow-200 rounded-sm -z-0"></span>
+                <h3 class="relative z-10 text-lg sm:text-xl font-extrabold text-zinc-900">Canan (Wipavee P.)</h3>
+              </div>
+              <span class="text-xs sm:text-sm font-bold text-royal">She/Her</span>
+            </div>
+
+            <ul class="space-y-2.5 text-xs sm:text-sm font-semibold text-zinc-700">
+              <li class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full bg-zinc-900 text-white flex items-center justify-center text-[10px]">●</span>
+                <span>Chatuchak, Bangkok, Thailand</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded border border-zinc-900 flex items-center justify-center text-[10px]">✉</span>
+                <a href="mailto:wipavee.pin@gmail.com" class="hover:text-royal transition-colors">wipavee.pin@gmail.com</a>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full border border-zinc-900 flex items-center justify-center text-[10px]">+</span>
+                <span>083-085-5587 · 5 Years Experience</span>
+              </li>
+              <li class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded bg-zinc-900 text-white flex items-center justify-center font-mono text-[10px] font-bold">gh</span>
+                <a href="https://github.com/wipaveenan" target="_blank" rel="noopener noreferrer" class="hover:text-royal transition-colors">
+                  github.com/wipaveenan · Figma Portfolio ↗
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ANIMATED LIME MARQUEE TICKER -->
+  <div class="marquee-wrap w-full bg-limepill border-y-[1.5px] border-zinc-900 py-3 overflow-hidden">
+    <div class="marquee-track font-mono text-xs sm:text-sm font-bold tracking-widest text-zinc-900">
+      <span class="px-6">UX/UI DESIGN MADE INTUITIVE &nbsp;|&nbsp; 5 YEARS OF EXPERIENCE &nbsp;|&nbsp; PRODUCT DESIGN &nbsp;|&nbsp; SITEMAP &amp; WIREFRAME &nbsp;|&nbsp; WORDPRESS &amp; ELEMENTOR &nbsp;|&nbsp; WOOCOMMERCE &nbsp;|&nbsp; FIGMA PROTOTYPING &nbsp;|</span>
+      <span class="px-6">UX/UI DESIGN MADE INTUITIVE &nbsp;|&nbsp; 5 YEARS OF EXPERIENCE &nbsp;|&nbsp; PRODUCT DESIGN &nbsp;|&nbsp; SITEMAP &amp; WIREFRAME &nbsp;|&nbsp; WORDPRESS &amp; ELEMENTOR &nbsp;|&nbsp; WOOCOMMERCE &nbsp;|&nbsp; FIGMA PROTOTYPING &nbsp;|</span>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- SECTION 2: ABOUT ME & 5-YEAR RESUME (White-Shirt Cutout + Tool Dock)    -->
+  <!-- ======================================================================= -->
+  <section id="sec-about" class="bg-white py-16 sm:py-24 px-4 sm:px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Left: White-Shirt Real Cutout + 8-Icon Tool Dock -->
+        <div class="lg:col-span-5 flex flex-col items-center">
+          <div class="relative w-full max-w-[360px] flex justify-center">
+            <div class="absolute top-8 w-64 h-64 sm:w-72 sm:h-72 rounded-full bg-pink-100/75 -z-0"></div>
+            <img
+              src="./assets/canan_new_cutout.png"
+              alt="Canan (Wipavee Pinyamuksapong)"
+              class="relative z-10 w-[86%] h-auto object-contain drop-shadow-lg"
+            />
+          </div>
+
+          <!-- 8-Icon Floating Tool Dock -->
+          <div class="relative z-20 -mt-6 bg-[#EFEFEF] border border-zinc-200 rounded-2xl shadow-md px-3 sm:px-4 py-3 flex flex-wrap justify-center gap-2 sm:gap-2.5 max-w-full">
+            <div title="Adobe Illustrator" class="tool-pill w-9 h-9 rounded-lg bg-[#330000] text-[#FF9A00] font-bold text-sm flex items-center justify-center shadow-xs">Ai</div>
+            <div title="Adobe Photoshop" class="tool-pill w-9 h-9 rounded-lg bg-[#001E36] text-[#31A8FF] font-bold text-sm flex items-center justify-center shadow-xs">Ps</div>
+            <div title="Figma" class="tool-pill w-9 h-9 rounded-lg bg-[#1E1E1E] flex items-center justify-center shadow-xs">
+              <svg class="w-5 h-5" viewBox="0 0 24 36" fill="none">
+                <circle cx="7" cy="6" r="5" fill="#F24E1E"/><circle cx="17" cy="6" r="5" fill="#FF7262"/>
+                <circle cx="7" cy="18" r="5" fill="#A259FF"/><circle cx="17" cy="18" r="5" fill="#1ABCFE"/>
+                <circle cx="7" cy="30" r="5" fill="#0ACF83"/>
+              </svg>
+            </div>
+            <div title="WordPress" class="tool-pill w-9 h-9 rounded-lg bg-[#21759B] text-white font-extrabold text-sm flex items-center justify-center shadow-xs">W</div>
+            <div title="Elementor" class="tool-pill w-9 h-9 rounded-lg bg-[#92003B] text-[#FF7BE5] font-bold text-sm flex items-center justify-center shadow-xs">El</div>
+            <div title="Canva" class="tool-pill w-9 h-9 rounded-full bg-[#00C4CC] text-white font-serif italic font-bold text-[10px] flex items-center justify-center shadow-xs">Canva</div>
+            <div title="ChatGPT" class="tool-pill w-9 h-9 rounded-lg bg-white border border-zinc-300 text-zinc-900 font-bold text-xs flex items-center justify-center shadow-xs">GPT</div>
+            <div title="Gemini AI" class="tool-pill w-9 h-9 rounded-lg bg-indigo-50 border border-indigo-200 text-indigo-600 font-bold text-base flex items-center justify-center shadow-xs">✦</div>
+          </div>
+        </div>
+
+        <!-- Right: iOS Selection "about me" + Bio + Experience + Speech Pills -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <!-- iOS Selection Highlight -->
+            <div class="relative inline-block px-4 py-1 bg-[#CBE8FF]">
+              <span class="absolute -left-1 -top-2 w-1.5 h-[calc(100%+8px)] bg-[#0077E6]"></span>
+              <span class="absolute -left-2.5 -top-3.5 w-4 h-4 rounded-full bg-[#0077E6]"></span>
+              <span class="absolute -right-1 top-1 w-1.5 h-[calc(100%+4px)] bg-[#0077E6]"></span>
+              <span class="absolute -right-2.5 -bottom-3 w-4 h-4 rounded-full bg-[#0077E6]"></span>
+              <h2 class="text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-zinc-900">about me</h2>
+            </div>
+
+            <!-- Tilted Lavender Brushstroke Callout -->
+            <div class="anim-float bg-violet-200/90 px-6 py-3 rounded-3xl -rotate-6 shadow-xs text-center">
+              <p class="font-serif italic font-bold text-lg text-indigo-950 leading-tight">
+                Design.<br/>Prototype.<br/>Elevate.
+              </p>
+            </div>
+          </div>
+
+          <p class="text-sm sm:text-base text-zinc-600 leading-relaxed">
+            A creative and detail-oriented <strong class="text-zinc-900">UX/UI Designer, Product Designer &amp; Frontend WordPress Developer</strong> with <strong class="text-royal">5 years of experience</strong> managing the end-to-end web &amp; product design process—from initial Sitemap and Wireframe architecture to Mood &amp; Tone UI prototypes in Figma and full-scale responsive e-commerce websites via Elementor, HTML/CSS, WooCommerce, and SEO.
+          </p>
+
+          <!-- Experience & Education Blue Folders -->
+          <div class="space-y-4">
+            <h3 class="text-base font-bold text-zinc-900">Experience &amp; Education</h3>
+
+            <div class="flex items-start gap-4">
+              <div class="shrink-0 w-14 h-11 rounded-lg bg-[#7BCEFF] relative mt-0.5 shadow-xs">
+                <div class="absolute -top-1.5 left-0 w-7 h-3 rounded-t-md bg-[#6EC6FF]"></div>
+              </div>
+              <div>
+                <p class="text-sm sm:text-base font-bold text-zinc-900">
+                  <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1.5"></span>
+                  UX/UI Designer &amp; WordPress Developer — 5 Years Experience
+                </p>
+                <p class="text-xs sm:text-sm italic text-zinc-600">
+                  Digihype Online Solution (2021 – Present) &amp; Bangkok Web Solution (Internship)
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="shrink-0 w-14 h-11 rounded-lg bg-[#7BCEFF] relative mt-0.5 shadow-xs">
+                <div class="absolute -top-1.5 left-0 w-7 h-3 rounded-t-md bg-[#6EC6FF]"></div>
+              </div>
+              <div>
+                <p class="text-sm sm:text-base font-bold text-zinc-900">
+                  <span class="inline-block w-2 h-2 rounded-full bg-blue-500 mr-1.5"></span>
+                  Bachelor of Education in Educational Technology (2019 – 2022)
+                </p>
+                <p class="text-xs sm:text-sm italic text-zinc-600">
+                  Silpakorn University · Ayutthaya Wittayalai School (Science-Mathematics)
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Languages & Direct Contact Speech Pills -->
+          <div class="space-y-2.5">
+            <h3 class="text-base font-bold text-zinc-900">Languages &amp; Direct Contact</h3>
+            <div class="flex flex-wrap gap-3">
+              <a href="tel:0830855587" class="inline-flex items-center px-4 py-2 rounded-full bg-[#0080FF] text-white text-xs sm:text-sm font-semibold hover:bg-blue-700 transition-colors">
+                Thai – Native · Canan (083-085-5587)
+              </a>
+              <a href="mailto:wipavee.pin@gmail.com" class="inline-flex items-center px-4 py-2 rounded-full bg-[#0080FF] text-white text-xs sm:text-sm font-semibold hover:bg-blue-700 transition-colors">
+                English – Working · wipavee.pin@gmail.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom 3 Pastel Summary Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14 reveal">
+        <a href="#sec-uxui" class="lift-card block rounded-3xl bg-[#F0FDF4] border-[1.5px] border-emerald-200 p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-xl bg-lime-400 flex items-center justify-center font-mono font-bold text-zinc-900">&lt;/&gt;</div>
+            <div>
+              <h4 class="font-serif text-xl font-bold text-royal">End-to-End UX/UI</h4>
+              <p class="text-xs font-semibold text-emerald-700">5 Years Total Experience</p>
+            </div>
+          </div>
+          <ul class="text-xs sm:text-sm text-zinc-700 space-y-1.5 mb-4">
+            <li>• Lead Sitemap, User Flow &amp; Wireframe architecture</li>
+            <li>• Conceptualize Mood &amp; Tone &amp; Figma UI prototypes</li>
+            <li>• Interactive Kiosk, Mobile App &amp; Web Design Systems</li>
+          </ul>
+          <span class="text-xs font-bold text-royal">Jump to UX/UI Works →</span>
+        </a>
+
+        <a href="#sec-wordpress" class="lift-card block rounded-3xl bg-[#F5F3FF] border-[1.5px] border-violet-200 p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-11 h-11 rounded-xl bg-violet-300 flex items-center justify-center font-sans font-extrabold text-indigo-950">W</div>
+            <div>
+              <h4 class="font-serif text-xl font-bold text-royal">WordPress &amp; Stores</h4>
+              <p class="text-xs font-semibold text-violet-700">6+ Live Client Production Builds</p>
+            </div>
+          </div>
+          <ul class="text-xs sm:text-sm text-zinc-700 space-y-1.5 mb-4">
+            <li>• Responsive layouts with Elementor &amp; custom HTML/CSS</li>
+            <li>• Full WooCommerce catalogs &amp; payment gateways</li>
+            <li>• Technical SEO fundamentals &amp; speed optimization</li>
+          </ul>
+          <span class="text-xs font-bold text-royal">Jump to Live Websites →</span>
+        </a>
+
+        <div class="rounded-3xl bg-[#FEFCE8] border-[1.5px] border-yellow-200 p-6">
+          <h4 class="font-serif text-xl font-bold text-royal mb-4">Core Toolkit</h4>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold text-zinc-900">
+            <span class="px-3 py-1.5 rounded-lg bg-white shadow-2xs">Figma</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white shadow-2xs">WordPress</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white shadow-2xs">Elementor</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white shadow-2xs">WooCommerce</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white shadow-2xs">HTML / CSS</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white shadow-2xs">Sitemap &amp; IA</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white shadow-2xs">Illustrator</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white shadow-2xs">Photoshop</span>
+            <span class="px-3 py-1.5 rounded-lg bg-white shadow-2xs">SEO &amp; AI Tools</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVY EDITORIAL TEXT DIVIDER -->
+  <div class="w-full bg-cream py-4 overflow-hidden">
+    <svg class="w-full h-14 sm:h-20" viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path id="wavy-line" d="M-40,55 Q200,-5 420,48 T900,42 T1480,35" fill="none"/>
+      <text class="font-serif text-2xl sm:text-3xl fill-zinc-900">
+        <textPath href="#wavy-line" startOffset="2%">
+          This space is for bold brands, intuitive interfaces, seamless user flows, and products that demand attention ✦
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- SECTION 3: INTERACTIVE 6-FOLDER DIRECTORY                               -->
+  <!-- ======================================================================= -->
+  <section id="sec-folders" class="bg-white py-16 sm:py-24 px-4 sm:px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-sky-100 border border-sky-300 font-mono text-[11px] font-bold text-sky-800 mb-5">
+          📂 INTERACTIVE DIRECTORY · CLICK ANY FOLDER ↓
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-light tracking-tight text-zinc-900">
+          5 Years of Craft <span class="font-serif italic font-normal">Tucked</span> Inside My Folder
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-zinc-500">
+          Hover to peek inside each folder — click any folder to scroll directly to that project section.
+        </p>
+      </div>
+
+      <!-- 6 Interactive Pastel Folders Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14 max-w-6xl mx-auto">
+
+        <!-- Folder 01: UX/UI Design -->
+        <a href="#sec-uxui" class="folder-card block text-center group">
+          <div class="relative mx-auto w-[270px] h-[230px]">
+            <div class="absolute bottom-0 inset-x-0 h-[168px] rounded-2xl bg-[#F28500]"></div>
+            <!-- Peeking Assets -->
+            <div class="folder-peek-item folder-peek-left absolute left-3 top-6 w-32 h-24 rounded-md bg-white p-1 shadow-md -rotate-6">
+              <img src="./assets/cpn_kiosk.jpg" alt="CPN Kiosk" class="w-full h-full object-cover rounded-sm"/>
+            </div>
+            <div class="folder-peek-item folder-peek-right absolute right-3 top-4 w-32 h-24 rounded-md bg-white p-1 shadow-md rotate-6">
+              <img src="./assets/ooca_real_web.jpg" alt="Ooca Web" class="w-full h-full object-cover rounded-sm"/>
+            </div>
+            <div class="folder-peek-item folder-peek-center absolute left-1/2 -translate-x-1/2 top-9 w-14 h-14 rounded-xl bg-[#1E1E1E] border border-slate-700 shadow-md flex items-center justify-center">
+              <svg class="w-7 h-7" viewBox="0 0 24 36" fill="none">
+                <circle cx="7" cy="6" r="5" fill="#F24E1E"/><circle cx="17" cy="6" r="5" fill="#FF7262"/>
+                <circle cx="7" cy="18" r="5" fill="#A259FF"/><circle cx="17" cy="18" r="5" fill="#1ABCFE"/>
+                <circle cx="7" cy="30" r="5" fill="#0ACF83"/>
+              </svg>
+            </div>
+            <!-- Front Pocket -->
+            <div class="absolute bottom-0 inset-x-0 h-[152px] rounded-2xl bg-[#FAC887] shadow-inner"></div>
+          </div>
+          <h3 class="mt-5 font-serif italic text-2xl text-zinc-900">01 · UX / UI Design</h3>
+          <span class="mt-2 inline-block px-3.5 py-1 rounded-full bg-orange-50 border border-orange-300 text-[11px] font-bold text-orange-700 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+            Click to view section ↓
+          </span>
+        </a>
+
+        <!-- Folder 02: Sitemap & Flow -->
+        <a href="#sec-sitemap" class="folder-card block text-center group">
+          <div class="relative mx-auto w-[270px] h-[230px]">
+            <div class="absolute bottom-0 inset-x-0 h-[168px] rounded-2xl bg-[#E89CB5]"></div>
+            <div class="folder-peek-item folder-peek-left absolute left-4 top-8 w-14 h-14 rounded-xl bg-[#330000] border border-amber-500 text-amber-400 font-extrabold text-xl flex items-center justify-center shadow-md -rotate-12">IA</div>
+            <div class="folder-peek-item folder-peek-right absolute right-3 top-3 w-36 h-24 rounded bg-white p-1 shadow-md rotate-6">
+              <img src="./assets/sitemap_nextreal.jpg" alt="Sitemap NEXT Real" class="w-full h-full object-cover"/>
+            </div>
+            <div class="folder-peek-item folder-peek-center absolute left-10 top-10 w-32 h-20 rounded bg-white p-1 shadow-md -rotate-3">
+              <img src="./assets/sitemap_panduit.jpg" alt="Sitemap Panduit" class="w-full h-full object-cover"/>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 h-[152px] rounded-2xl bg-[#FDDCE5]"></div>
+          </div>
+          <h3 class="mt-5 font-serif italic text-2xl text-zinc-900">02 · Sitemap &amp; Flow</h3>
+          <span class="mt-2 inline-block px-3.5 py-1 rounded-full bg-pink-50 border border-pink-300 text-[11px] font-bold text-pink-700 group-hover:bg-pink-600 group-hover:text-white transition-colors">
+            Click to view section ↓
+          </span>
+        </a>
+
+        <!-- Folder 03: Mood & Tone -->
+        <a href="#sec-moodtone" class="folder-card block text-center group">
+          <div class="relative mx-auto w-[270px] h-[230px]">
+            <div class="absolute bottom-0 inset-x-0 h-[168px] rounded-2xl bg-[#4E7366]"></div>
+            <div class="folder-peek-item folder-peek-left absolute left-3 top-4 w-32 h-24 rounded bg-pink-50 p-1 shadow-md -rotate-6">
+              <img src="./assets/mood_a.jpg" alt="Mood A" class="w-full h-full object-cover"/>
+            </div>
+            <div class="folder-peek-item folder-peek-right absolute right-3 top-6 w-20 h-20 rounded-xl bg-emerald-700 text-white font-extrabold text-2xl flex items-center justify-center shadow-md rotate-12">CI</div>
+            <div class="folder-peek-item folder-peek-center absolute left-1/2 -translate-x-1/2 top-10 w-36 h-20 rounded bg-white p-1 shadow-md">
+              <img src="./assets/mood_c.jpg" alt="Mood C" class="w-full h-full object-cover"/>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 h-[152px] rounded-2xl bg-[#80A698]"></div>
+          </div>
+          <h3 class="mt-5 font-serif italic text-2xl text-zinc-900">03 · Mood &amp; Tone</h3>
+          <span class="mt-2 inline-block px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-300 text-[11px] font-bold text-emerald-800 group-hover:bg-emerald-700 group-hover:text-white transition-colors">
+            Click to view section ↓
+          </span>
+        </a>
+
+        <!-- Folder 04: WordPress Web -->
+        <a href="#sec-wordpress" class="folder-card block text-center group">
+          <div class="relative mx-auto w-[270px] h-[230px]">
+            <div class="absolute bottom-0 inset-x-0 h-[168px] rounded-2xl bg-[#E5A910]"></div>
+            <div class="folder-peek-item folder-peek-left absolute left-3 top-4 w-32 h-24 rounded-md bg-white p-1 shadow-md -rotate-6 overflow-hidden">
+              <div class="bg-[#21759B] text-white text-[8px] font-bold text-center py-0.5 rounded-t-sm">WORDPRESS</div>
+              <img src="./assets/web_artthakij_dev.png" alt="Artthakij Web" class="w-full h-16 object-contain mt-1"/>
+            </div>
+            <div class="folder-peek-item folder-peek-right absolute right-3 top-5 w-32 h-24 rounded-md bg-white p-1 shadow-md rotate-6">
+              <img src="./assets/web_imagine_dev.png" alt="Imagine Group" class="w-full h-full object-contain"/>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 h-[152px] rounded-2xl bg-[#F1D683]"></div>
+          </div>
+          <h3 class="mt-5 font-serif italic text-2xl text-zinc-900">04 · WordPress Web</h3>
+          <span class="mt-2 inline-block px-3.5 py-1 rounded-full bg-yellow-50 border border-yellow-300 text-[11px] font-bold text-yellow-800 group-hover:bg-yellow-600 group-hover:text-white transition-colors">
+            Click to view section ↓
+          </span>
+        </a>
+
+        <!-- Folder 05: My Products (Product Design) -->
+        <a href="#sec-products" class="folder-card block text-center group relative">
+          <div class="relative mx-auto w-[270px] h-[230px]">
+            <div class="absolute bottom-0 inset-x-0 h-[168px] rounded-2xl bg-[#B83DBA]"></div>
+            <div class="folder-peek-item folder-peek-left absolute left-3 top-6 w-28 h-22 rounded-md bg-white p-1 shadow-md -rotate-12">
+              <img src="./assets/prod_perfume.jpg" alt="Puppy Love Perfume" class="w-full h-20 object-cover rounded-sm"/>
+            </div>
+            <div class="folder-peek-item folder-peek-center absolute left-1/2 -translate-x-1/2 top-2 w-14 h-14 rounded-xl bg-[#1F003B] border border-purple-400 text-purple-200 font-extrabold text-sm flex items-center justify-center shadow-md rotate-3">PROD</div>
+            <div class="folder-peek-item folder-peek-right absolute right-3 top-5 w-28 h-22 rounded-md bg-white p-1 shadow-md rotate-12">
+              <img src="./assets/prod_hanger.jpg" alt="Bag Hanger" class="w-full h-20 object-cover rounded-sm"/>
+            </div>
+            <div class="absolute bottom-0 inset-x-0 h-[152px] rounded-2xl bg-[#F1AAF1]"></div>
+            <!-- Animated Pixel Cursor -->
+            <svg class="anim-cursor absolute -right-4 -bottom-2 w-9 h-11 z-20 drop-shadow" viewBox="0 0 36 52">
+              <path d="M2,2 L2,42 L13,32 L21,48 L28,44 L20,28 L34,28 Z" fill="#FFFFFF" stroke="#111111" stroke-width="3"/>
+            </svg>
+          </div>
+          <h3 class="mt-5 font-serif italic text-2xl text-zinc-900">05 · My Products</h3>
+          <span class="mt-2 inline-block px-3.5 py-1 rounded-full bg-purple-50 border border-purple-300 text-[11px] font-bold text-purple-800 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+            Click to view section ↓
+          </span>
+        </a>
+
+        <!-- Folder 06: Graphic Design -->
+        <a href="#sec-graphics" class="folder-card block text-center group">
+          <div class="relative mx-auto w-[270px] h-[230px]">
+            <div class="absolute bottom-0 inset-x-0 h-[168px] rounded-2xl bg-[#2A7AB0]"></div>
+            <div class="folder-peek-item folder-peek-left absolute left-3 top-6 w-30 h-20 rounded-md bg-white p-1 shadow-md -rotate-12">
+              <img src="./assets/gfx_gsb.jpg" alt="GSB Campaign" class="w-full h-18 object-cover rounded-sm"/>
+            </div>
+            <div class="folder-peek-item folder-peek-right absolute right-2 top-3 w-32 h-20 rounded-lg bg-purple-500 text-white p-2 shadow-md -rotate-12 flex flex-col justify-between text-[10px] font-bold">
+              <span>Campaign &amp; Brand</span>
+              <div class="flex justify-end gap-1">
+                <span class="px-1 bg-[#001E36] text-[#31A8FF] rounded">Ps</span>
+                <span class="px-1 bg-[#330000] text-[#FF9A00] rounded">Ai</span>
+              </div>
+            </div>
+            <div class="folder-peek-item folder-peek-center absolute left-1/2 -translate-x-1/2 top-10 w-14 h-14 rounded-xl bg-[#0A66C2] text-white font-extrabold text-2xl flex items-center justify-center shadow-md rotate-6">in</div>
+            <div class="absolute bottom-0 inset-x-0 h-[152px] rounded-2xl bg-[#ACE0F9]"></div>
+          </div>
+          <h3 class="mt-5 font-serif italic text-2xl text-zinc-900">06 · Graphic Design</h3>
+          <span class="mt-2 inline-block px-3.5 py-1 rounded-full bg-sky-50 border border-sky-300 text-[11px] font-bold text-sky-800 group-hover:bg-sky-700 group-hover:text-white transition-colors">
+            Click to view section ↓
+          </span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- SECTION 01: FEATURED UX/UI WORKS                                        -->
+  <!-- ======================================================================= -->
+  <section id="sec-uxui" class="bg-grid-paper border-t border-zinc-200 py-16 sm:py-24 px-4 sm:px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-12 reveal">
+        <div>
+          <span class="inline-block px-3.5 py-1 rounded-full bg-[#FAC887] font-mono text-[11px] font-bold text-zinc-900 mb-3">
+            FOLDER 01 // UX/UI
+          </span>
+          <h2 class="font-serif text-4xl sm:text-5xl font-bold text-royal">Featured UX/UI Works</h2>
+          <div class="h-1.5 w-56 bg-lime-400 rounded-full mt-2"></div>
+        </div>
+        <a href="#sec-folders" class="px-4 py-2 rounded-full bg-white border-[1.5px] border-zinc-900 text-xs font-bold hover:bg-zinc-900 hover:text-white transition-colors">
+          ↑ Back to All Folders
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 reveal">
+
+        <!-- Card 1: CPN Central FoodPark -->
+        <article class="lift-card bg-white border-[1.5px] border-zinc-200 rounded-2xl overflow-hidden flex flex-col">
+          <div class="bg-[#FDE68A] px-5 py-3 flex items-center gap-2 border-b border-amber-200">
+            <span class="w-2.5 h-2.5 rounded-full bg-orange-600"></span>
+            <span class="font-mono text-xs font-bold text-zinc-900">KIOSK &amp; MOBILE ORDERING · CPN</span>
+          </div>
+          <div class="p-5 bg-amber-50/60 space-y-3">
+            <button type="button" data-lightbox-src="./assets/cpn_kiosk.jpg" data-lightbox-cap="CPN Central FoodPark — Self-Service Kiosk UI" class="w-full block rounded-xl overflow-hidden bg-white border border-amber-100 hover:opacity-95 transition-opacity cursor-zoom-in">
+              <img src="./assets/cpn_kiosk.jpg" alt="CPN Kiosk UI" class="w-full h-44 sm:h-48 object-contain p-2"/>
+            </button>
+            <button type="button" data-lightbox-src="./assets/cpn_mobile.jpg" data-lightbox-cap="CPN Central FoodPark — Mobile Food Ordering UI" class="w-full block rounded-xl overflow-hidden bg-white border border-amber-100 hover:opacity-95 transition-opacity cursor-zoom-in">
+              <img src="./assets/cpn_mobile.jpg" alt="CPN Mobile UI" class="w-full h-44 sm:h-48 object-contain p-2"/>
+            </button>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between gap-4">
+            <div>
+              <h3 class="text-xl font-extrabold text-zinc-900 flex items-center gap-2">
+                CPN Central FoodPark — Kiosk &amp; Mobile UI
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              </h3>
+              <p class="text-xs sm:text-sm font-semibold text-orange-600 mt-1">
+                End-to-End 7-Step Ordering Flow · Dine-In, Take Home &amp; Mall Delivery
+              </p>
+              <p class="text-sm text-zinc-600 mt-2">
+                Designed self-service kiosk and mobile food ordering interfaces with multi-eWallet payment integration.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="https://www.figma.com/design/XuWWh7acIgZkyTIt6feNq9/Portfolio?node-id=828-3417&t=bC6xwe63n86WJ8EH-1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-zinc-900 text-white text-xs font-bold hover:bg-royal transition-colors">
+                Open Figma Prototype ↗
+              </a>
+              <button type="button" data-lightbox-src="./assets/cpn_kiosk.jpg" data-lightbox-cap="CPN Central FoodPark — Kiosk UI" class="px-3.5 py-2 rounded-xl border border-zinc-300 text-xs font-bold text-zinc-700 hover:bg-zinc-100 transition-colors">
+                Zoom Screens 🔍
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2: Ooca Mind Check-in -->
+        <article class="lift-card bg-white border-[1.5px] border-zinc-200 rounded-2xl overflow-hidden flex flex-col">
+          <div class="bg-[#BCE3FA] px-5 py-3 flex items-center gap-2 border-b border-sky-200">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-700"></span>
+            <span class="font-mono text-xs font-bold text-zinc-900">INTERACTIVE WEB APP · OOCA</span>
+          </div>
+          <div class="p-5 bg-slate-900 flex items-center justify-center">
+            <button type="button" data-lightbox-src="./assets/ooca_real_web.jpg" data-lightbox-cap="Ooca — A Small Mental Health Experience (Live Web App)" class="w-full block rounded-xl overflow-hidden cursor-zoom-in hover:opacity-95 transition-opacity">
+              <img src="./assets/ooca_real_web.jpg" alt="Ooca Real Web Screenshot" class="w-full h-[368px] sm:h-[396px] object-contain rounded-xl"/>
+            </button>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between gap-4">
+            <div>
+              <h3 class="text-xl font-extrabold text-zinc-900 flex items-center gap-2">
+                Ooca — A Small Mental Health Experience
+                <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+              </h3>
+              <p class="text-xs sm:text-sm font-semibold text-royal mt-1">
+                UX Research · Mooca Mascot System · Interactive GitHub Pages Web App
+              </p>
+              <p class="text-sm text-zinc-600 mt-2">
+                Built a 5-question projective mental health check-in from low-fi user flow to interactive Figma prototypes and live coded web experience.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="https://www.figma.com/design/2uw9pFLOTfofmMLZ0HbdiK/A-Small-Mental-Health-Experience---Wipavee?node-id=4-2309&t=35EuRrxNbIwYw4hs-1" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-royal text-white text-xs font-bold hover:bg-zinc-900 transition-colors">
+                Open Figma File ↗
+              </a>
+              <a href="https://github.com/wipaveenan" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-zinc-300 text-xs font-bold text-zinc-800 hover:bg-zinc-100 transition-colors">
+                GitHub Repo ↗
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- SECTION 02 & 03: SITEMAPS & MOOD & TONE PROPOSALS                       -->
+  <!-- ======================================================================= -->
+  <section id="sec-sitemap" class="bg-white py-16 sm:py-24 px-4 sm:px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+      <!-- Folder Tabs Header -->
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div class="flex items-end gap-1">
+          <div class="px-5 py-2.5 rounded-t-2xl bg-[#FDDCE5] border-[1.5px] border-b-0 border-zinc-900 font-mono text-xs font-bold text-zinc-900">
+            02 · SITEMAP &amp; IA
+          </div>
+          <div class="px-5 py-2.5 rounded-t-2xl bg-[#80A698] border-[1.5px] border-b-0 border-zinc-900 font-mono text-xs font-bold text-white">
+            03 · MOOD &amp; TONE CI
+          </div>
+        </div>
+        <a href="#sec-folders" class="mb-2 px-4 py-1.5 rounded-full bg-cream border-[1.5px] border-zinc-900 text-xs font-bold hover:bg-zinc-900 hover:text-white transition-colors">
+          ↑ Back to All Folders
+        </a>
+      </div>
+
+      <!-- Main Periwinkle Folder Container -->
+      <div class="bg-[#D8E6FF] border-[1.8px] border-zinc-900 rounded-b-2xl rounded-tr-2xl p-5 sm:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 reveal">
+
+        <!-- Left: Sitemaps -->
+        <div class="bg-white border-[1.5px] border-zinc-900 rounded-2xl p-5 sm:p-6 space-y-4">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-pink-100 font-mono text-[11px] font-bold text-pink-700">
+            SITEMAP &amp; WIREFRAME
+          </span>
+          <div>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-zinc-900">The NEXT Real &amp; Panduit</h3>
+            <p class="text-sm text-zinc-600 mt-1">Information architecture, color-coded page hierarchy &amp; user flow blueprints.</p>
+          </div>
+          <div class="space-y-4">
+            <button type="button" data-lightbox-src="./assets/sitemap_nextreal.jpg" data-lightbox-cap="The NEXT Real — Sitemap & Information Architecture" class="w-full block rounded-xl bg-slate-50 border border-slate-200 p-2 hover:border-royal transition-colors cursor-zoom-in">
+              <img src="./assets/sitemap_nextreal.jpg" alt="The NEXT Real Sitemap" class="w-full h-48 object-contain"/>
+            </button>
+            <button type="button" data-lightbox-src="./assets/sitemap_panduit.jpg" data-lightbox-cap="Panduit — Sitemap & Page Hierarchy" class="w-full block rounded-xl bg-slate-50 border border-slate-200 p-2 hover:border-royal transition-colors cursor-zoom-in">
+              <img src="./assets/sitemap_panduit.jpg" alt="Panduit Sitemap" class="w-full h-48 object-contain"/>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Mood & Tone Proposals -->
+        <div id="sec-moodtone" class="bg-white border-[1.5px] border-zinc-900 rounded-2xl p-5 sm:p-6 space-y-4">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-emerald-100 font-mono text-[11px] font-bold text-emerald-700">
+            MOOD &amp; TONE PROPOSALS
+          </span>
+          <div>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-zinc-900">Petstopia Client Proposals</h3>
+            <p class="text-sm text-zinc-600 mt-1">3 distinct UI mood &amp; tone directions presented to align brand identity with UX.</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button type="button" data-lightbox-src="./assets/mood_a.jpg" data-lightbox-cap="Petstopia Proposal — Option A: Colorful & Fun" class="rounded-xl bg-slate-50 border border-slate-200 p-2.5 text-center hover:border-indigo-500 transition-colors cursor-zoom-in">
+              <img src="./assets/mood_a.jpg" alt="Option A Colorful & Fun" class="w-full h-36 object-contain"/>
+              <span class="block mt-2 text-xs font-bold text-indigo-600">Option A · Colorful &amp; Fun</span>
+            </button>
+            <button type="button" data-lightbox-src="./assets/mood_b.jpg" data-lightbox-cap="Petstopia Proposal — Option B: Warm Earth-Tone" class="rounded-xl bg-slate-50 border border-slate-200 p-2.5 text-center hover:border-amber-500 transition-colors cursor-zoom-in">
+              <img src="./assets/mood_b.jpg" alt="Option B Warm Earth-Tone" class="w-full h-36 object-contain"/>
+              <span class="block mt-2 text-xs font-bold text-amber-600">Option B · Warm Earth-Tone</span>
+            </button>
+          </div>
+          <button type="button" data-lightbox-src="./assets/mood_c.jpg" data-lightbox-cap="Petstopia Proposal — Option C: Brand Recognition CI" class="w-full rounded-xl bg-slate-50 border border-slate-200 p-2.5 text-center hover:border-rose-500 transition-colors cursor-zoom-in">
+            <img src="./assets/mood_c.jpg" alt="Option C Brand Recognition CI" class="w-full h-44 object-contain"/>
+            <span class="block mt-2 text-xs font-bold text-rose-600">Option C · Brand Recognition CI</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- SECTION 04: LIVE WORDPRESS WEBSITES                                     -->
+  <!-- ======================================================================= -->
+  <section id="sec-wordpress" class="bg-cream py-16 sm:py-24 px-4 sm:px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-12 reveal">
+        <div>
+          <span class="inline-block px-3.5 py-1 rounded-full bg-yellow-300 font-mono text-[11px] font-bold text-zinc-900 mb-3">
+            FOLDER 04 // LIVE WEBSITES
+          </span>
+          <h2 class="font-serif text-4xl sm:text-5xl font-bold text-royal">Live WordPress &amp; Stores</h2>
+          <div class="h-1.5 w-56 bg-lime-400 rounded-full mt-2"></div>
+        </div>
+        <div class="flex items-center gap-4">
+          <p class="hidden sm:block text-sm text-zinc-600 max-w-xs">
+            6 responsive websites built with WordPress, Elementor, WooCommerce &amp; SEO fundamentals.
+          </p>
+          <a href="#sec-folders" class="px-4 py-2 rounded-full bg-white border-[1.5px] border-zinc-900 text-xs font-bold hover:bg-zinc-900 hover:text-white transition-colors">
+            ↑ Back to All Folders
+          </a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 reveal">
+        <!-- 1. Artthakij -->
+        <a href="https://artthakij.com" target="_blank" rel="noopener noreferrer" class="lift-card bg-white rounded-2xl overflow-hidden border border-zinc-200 flex flex-col">
+          <div class="bg-[#D9F99D] p-5 flex items-center justify-center h-52">
+            <img src="./assets/web_artthakij_dev.png" alt="Artthakij Law" class="max-h-44 object-contain drop-shadow"/>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-extrabold text-zinc-900 flex items-center gap-2">
+                Artthakij Law <span class="w-2.5 h-2.5 rounded-full bg-lime-500"></span>
+              </h3>
+              <p class="text-xs font-bold text-lime-700 mt-1">Corporate Web · WordPress &amp; Elementor</p>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-2">Professional legal advisory website structured for trust &amp; SEO.</p>
+            </div>
+            <span class="mt-4 text-xs font-bold text-royal">artthakij.com →</span>
+          </div>
+        </a>
+
+        <!-- 2. Imagine Group -->
+        <a href="https://imaginegroupinterior.com" target="_blank" rel="noopener noreferrer" class="lift-card bg-white rounded-2xl overflow-hidden border border-zinc-200 flex flex-col">
+          <div class="bg-[#DDD6FE] p-5 flex items-center justify-center h-52">
+            <img src="./assets/web_imagine_dev.png" alt="Imagine Group Interior" class="max-h-44 object-contain drop-shadow"/>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-extrabold text-zinc-900 flex items-center gap-2">
+                Imagine Group Interior <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
+              </h3>
+              <p class="text-xs font-bold text-violet-700 mt-1">Architecture Portfolio · Custom Responsive UI</p>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-2">Interior portfolio showcasing residential &amp; commercial projects.</p>
+            </div>
+            <span class="mt-4 text-xs font-bold text-royal">imaginegroupinterior.com →</span>
+          </div>
+        </a>
+
+        <!-- 3. FullRoom77 -->
+        <a href="https://fullroom77.com" target="_blank" rel="noopener noreferrer" class="lift-card bg-white rounded-2xl overflow-hidden border border-zinc-200 flex flex-col">
+          <div class="bg-[#FDE68A] p-5 flex items-center justify-center h-52">
+            <img src="./assets/web_fullroom77_dev.png" alt="FullRoom77 Boutique" class="max-h-44 object-contain drop-shadow"/>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-extrabold text-zinc-900 flex items-center gap-2">
+                FullRoom77 Boutique <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+              </h3>
+              <p class="text-xs font-bold text-amber-700 mt-1">Hospitality &amp; Booking · WordPress</p>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-2">Warm hospitality UI featuring room galleries and inquiry flows.</p>
+            </div>
+            <span class="mt-4 text-xs font-bold text-royal">fullroom77.com →</span>
+          </div>
+        </a>
+
+        <!-- 4. Nokkhualok -->
+        <a href="https://nokkhualok.co.th" target="_blank" rel="noopener noreferrer" class="lift-card bg-white rounded-2xl overflow-hidden border border-zinc-200 flex flex-col">
+          <div class="bg-[#FECDD3] p-5 flex items-center justify-center h-52">
+            <img src="./assets/web_nokkhualok_dev.png" alt="Nokkhualok Sauce" class="max-h-44 object-contain drop-shadow"/>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-extrabold text-zinc-900 flex items-center gap-2">
+                Nokkhualok Sauce <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+              </h3>
+              <p class="text-xs font-bold text-rose-700 mt-1">Brand &amp; Product Catalog · WordPress</p>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-2">Appetizing product catalog and recipe hub across all devices.</p>
+            </div>
+            <span class="mt-4 text-xs font-bold text-royal">nokkhualok.co.th →</span>
+          </div>
+        </a>
+
+        <!-- 5. Bubble Bear -->
+        <a href="https://bubble-bear.co" target="_blank" rel="noopener noreferrer" class="lift-card bg-white rounded-2xl overflow-hidden border border-zinc-200 flex flex-col">
+          <div class="bg-[#BAE6FD] p-5 flex items-center justify-center h-52">
+            <img src="./assets/web_bubblebear_dev.png" alt="Bubble Bear Store" class="max-h-44 object-contain drop-shadow"/>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-extrabold text-zinc-900 flex items-center gap-2">
+                Bubble Bear Store <span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span>
+              </h3>
+              <p class="text-xs font-bold text-sky-700 mt-1">E-Commerce · WooCommerce &amp; Gateways</p>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-2">Full online storefront with product catalog, cart &amp; checkout.</p>
+            </div>
+            <span class="mt-4 text-xs font-bold text-royal">bubble-bear.co →</span>
+          </div>
+        </a>
+
+        <!-- 6. Secret Ohm PMU -->
+        <a href="https://secretohmpmu.com" target="_blank" rel="noopener noreferrer" class="lift-card bg-white rounded-2xl overflow-hidden border border-zinc-200 flex flex-col">
+          <div class="bg-[#F5D0FE] p-5 flex items-center justify-center h-52">
+            <img src="./assets/web_secretohm_dev.png" alt="Secret Ohm PMU" class="max-h-44 object-contain drop-shadow"/>
+          </div>
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="text-lg font-extrabold text-zinc-900 flex items-center gap-2">
+                Secret Ohm PMU <span class="w-2.5 h-2.5 rounded-full bg-fuchsia-600"></span>
+              </h3>
+              <p class="text-xs font-bold text-fuchsia-700 mt-1">Beauty Studio &amp; Academy · WordPress</p>
+              <p class="text-xs sm:text-sm text-zinc-600 mt-2">High-converting beauty academy &amp; course booking platform.</p>
+            </div>
+            <span class="mt-4 text-xs font-bold text-royal">secretohmpmu.com →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- SECTION 05: PRODUCT DESIGN / MY PRODUCTS (4 Original Products)          -->
+  <!-- ======================================================================= -->
+  <section id="sec-products" class="bg-white border-t border-zinc-200 py-16 sm:py-24 px-4 sm:px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-12 reveal">
+        <div>
+          <span class="inline-block px-3.5 py-1 rounded-full bg-[#F1AAF1] font-mono text-[11px] font-bold text-zinc-900 mb-3">
+            FOLDER 05 // PRODUCT DESIGN
+          </span>
+          <h2 class="font-serif text-4xl sm:text-5xl font-bold text-royal">My Original Products</h2>
+          <div class="h-1.5 w-52 bg-purple-400 rounded-full mt-2"></div>
+        </div>
+        <a href="#sec-folders" class="px-4 py-2 rounded-full bg-cream border-[1.5px] border-zinc-900 text-xs font-bold hover:bg-zinc-900 hover:text-white transition-colors">
+          ↑ Back to All Folders
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        <!-- 1. Puppy Love Perfume -->
+        <div class="lift-card bg-cream border border-zinc-200 rounded-2xl overflow-hidden flex flex-col">
+          <button type="button" data-lightbox-src="./assets/prod_perfume.jpg" data-lightbox-cap="Puppy Love Perfume — Original Fragrance Brand" class="w-full h-60 overflow-hidden cursor-zoom-in">
+            <img src="./assets/prod_perfume.jpg" alt="Puppy Love Perfume" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"/>
+          </button>
+          <div class="p-5 flex-1">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-purple-700">Fragrance &amp; Packaging</span>
+            <h3 class="text-lg font-extrabold text-zinc-900 mt-1">Puppy Love Perfume</h3>
+            <p class="text-xs sm:text-sm text-zinc-600 mt-1.5">
+              Independent fragrance brand crafting dog-breed-inspired scents (Samoyed, Maltese, Pomeranian) &amp; 10ml Lucky/Love/Rich line.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Portable Bag Hanger -->
+        <div class="lift-card bg-cream border border-zinc-200 rounded-2xl overflow-hidden flex flex-col">
+          <button type="button" data-lightbox-src="./assets/prod_hanger.jpg" data-lightbox-cap="Portable Bag Hanger — Custom Foldable Design" class="w-full h-60 overflow-hidden cursor-zoom-in">
+            <img src="./assets/prod_hanger.jpg" alt="Portable Bag Hanger" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"/>
+          </button>
+          <div class="p-5 flex-1">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-purple-700">Industrial &amp; Merch</span>
+            <h3 class="text-lg font-extrabold text-zinc-900 mt-1">Portable Bag Hanger</h3>
+            <p class="text-xs sm:text-sm text-zinc-600 mt-1.5">
+              Custom foldable portable handbag hanger (max 5kg load) designed with illustrated charm inserts and sold on Shopee.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Stainless Pocket Case -->
+        <div class="lift-card bg-cream border border-zinc-200 rounded-2xl overflow-hidden flex flex-col">
+          <button type="button" data-lightbox-src="./assets/prod_case.jpg" data-lightbox-cap="Stainless Pocket Case — Custom Accessory Box" class="w-full h-60 overflow-hidden cursor-zoom-in">
+            <img src="./assets/prod_case.jpg" alt="Stainless Pocket Case" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"/>
+          </button>
+          <div class="p-5 flex-1">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-purple-700">Accessory Design</span>
+            <h3 class="text-lg font-extrabold text-zinc-900 mt-1">Stainless Pocket Case</h3>
+            <p class="text-xs sm:text-sm text-zinc-600 mt-1.5">
+              Custom-designed stainless steel accessory and keepsake box featuring original graphic artwork and durable finish.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Birthday Candle Card -->
+        <div class="lift-card bg-cream border border-zinc-200 rounded-2xl overflow-hidden flex flex-col">
+          <button type="button" data-lightbox-src="./assets/prod_candle.jpg" data-lightbox-cap="Birthday Candle Card — Interactive Greeting Card" class="w-full h-60 overflow-hidden cursor-zoom-in">
+            <img src="./assets/prod_candle.jpg" alt="Birthday Candle Card" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"/>
+          </button>
+          <div class="p-5 flex-1">
+            <span class="font-mono text-[10px] font-bold uppercase tracking-wider text-purple-700">Print &amp; Giftware</span>
+            <h3 class="text-lg font-extrabold text-zinc-900 mt-1">Birthday Candle Card</h3>
+            <p class="text-xs sm:text-sm text-zinc-600 mt-1.5">
+              Playful greeting card pairing custom illustration with a real birthday candle for a memorable tactile unboxing moment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- SECTION 06: KEY VISUALS & SOCIAL CAMPAIGNS                              -->
+  <!-- ======================================================================= -->
+  <section id="sec-graphics" class="bg-pink-grid border-t border-pink-300 py-16 sm:py-24 px-4 sm:px-6 lg:px-10 relative overflow-hidden">
+    <!-- Floating Pink Heart -->
+    <div class="anim-float hidden sm:flex absolute top-8 right-10 w-16 h-16 rounded-full bg-pink-500/15 items-center justify-center text-3xl select-none">
+      💖
+    </div>
+
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-12 reveal">
+        <div>
+          <span class="inline-block px-3.5 py-1 rounded-full bg-[#BCE3FA] font-mono text-[11px] font-bold text-slate-900 mb-3">
+            FOLDER 06 // CAMPAIGNS
+          </span>
+          <h2 class="font-serif text-4xl sm:text-5xl font-bold text-zinc-900">Key Visuals &amp; Social Campaigns</h2>
+        </div>
+        <a href="#sec-folders" class="px-4 py-2 rounded-full bg-white border-[1.5px] border-zinc-900 text-xs font-bold hover:bg-zinc-900 hover:text-white transition-colors">
+          ↑ Back to All Folders
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
+        <!-- Card 1 -->
+        <div class="lift-card bg-white rounded-2xl p-4 flex flex-col justify-between gap-4">
+          <div class="space-y-3">
+            <button type="button" data-lightbox-src="./assets/gfx_gsb.jpg" data-lightbox-cap="GSB มีที่ มีเงิน — Hero Web Banner" class="w-full block rounded-xl overflow-hidden cursor-zoom-in">
+              <img src="./assets/gfx_gsb.jpg" alt="GSB Campaign" class="w-full h-32 object-cover"/>
+            </button>
+            <button type="button" data-lightbox-src="./assets/gfx_feelgreat.jpg" data-lightbox-cap="Feel Great Now — Promo Banner" class="w-full block rounded-xl overflow-hidden cursor-zoom-in">
+              <img src="./assets/gfx_feelgreat.jpg" alt="Feel Great Now" class="w-full h-32 object-cover"/>
+            </button>
+          </div>
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <h3 class="text-sm font-extrabold text-zinc-900">GSB &amp; FEEL GREAT NOW</h3>
+              <p class="text-xs text-zinc-500">Hero Web &amp; Promo Banners</p>
+            </div>
+            <button type="button" data-lightbox-src="./assets/gfx_gsb.jpg" data-lightbox-cap="GSB มีที่ มีเงิน" class="w-9 h-9 rounded-full bg-pink-50 border border-zinc-900 flex items-center justify-center font-bold hover:bg-zinc-900 hover:text-white transition-colors">→</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="lift-card bg-white rounded-2xl p-4 flex flex-col justify-between gap-4">
+          <div class="grid grid-cols-2 gap-2.5">
+            <button type="button" data-lightbox-src="./assets/gfx_beautypro_1.jpg" data-lightbox-cap="Beauty Pro Japan — Social Visual 1" class="rounded-xl overflow-hidden cursor-zoom-in">
+              <img src="./assets/gfx_beautypro_1.jpg" alt="Beauty Pro 1" class="w-full h-64 object-cover"/>
+            </button>
+            <button type="button" data-lightbox-src="./assets/gfx_beautypro_2.jpg" data-lightbox-cap="Beauty Pro Japan — Social Visual 2" class="rounded-xl overflow-hidden cursor-zoom-in">
+              <img src="./assets/gfx_beautypro_2.jpg" alt="Beauty Pro 2" class="w-full h-64 object-cover"/>
+            </button>
+          </div>
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <h3 class="text-sm font-extrabold text-zinc-900">BEAUTY PRO JAPAN</h3>
+              <p class="text-xs text-zinc-500">Pet Care Social Media Series</p>
+            </div>
+            <button type="button" data-lightbox-src="./assets/gfx_beautypro_1.jpg" data-lightbox-cap="Beauty Pro Japan" class="w-9 h-9 rounded-full bg-pink-50 border border-zinc-900 flex items-center justify-center font-bold hover:bg-zinc-900 hover:text-white transition-colors">→</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="lift-card bg-white rounded-2xl p-4 flex flex-col justify-between gap-4">
+          <button type="button" data-lightbox-src="./assets/gfx_hometools_1.jpg" data-lightbox-cap="Hometools Center — Point Redemption Key Visual" class="w-full rounded-xl overflow-hidden cursor-zoom-in">
+            <img src="./assets/gfx_hometools_1.jpg" alt="Hometools Campaign" class="w-full h-64 object-cover"/>
+          </button>
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <h3 class="text-sm font-extrabold text-zinc-900">HOMETOOLS CAMPAIGN</h3>
+              <p class="text-xs text-zinc-500">Point Redemption Key Visual</p>
+            </div>
+            <button type="button" data-lightbox-src="./assets/gfx_hometools_1.jpg" data-lightbox-cap="Hometools Campaign" class="w-9 h-9 rounded-full bg-pink-50 border border-zinc-900 flex items-center justify-center font-bold hover:bg-zinc-900 hover:text-white transition-colors">→</button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="lift-card bg-white rounded-2xl p-4 flex flex-col justify-between gap-4">
+          <button type="button" data-lightbox-src="./assets/gfx_hometools_2.jpg" data-lightbox-cap="Hometools Center — Reward Tier Catalog" class="w-full rounded-xl overflow-hidden cursor-zoom-in">
+            <img src="./assets/gfx_hometools_2.jpg" alt="Reward Tier Catalog" class="w-full h-64 object-cover"/>
+          </button>
+          <div class="flex items-center justify-between pt-2">
+            <div>
+              <h3 class="text-sm font-extrabold text-zinc-900">REWARD TIER CATALOG</h3>
+              <p class="text-xs text-zinc-500">Infographic &amp; Promo Layout</p>
+            </div>
+            <button type="button" data-lightbox-src="./assets/gfx_hometools_2.jpg" data-lightbox-cap="Reward Tier Catalog" class="w-9 h-9 rounded-full bg-pink-50 border border-zinc-900 flex items-center justify-center font-bold hover:bg-zinc-900 hover:text-white transition-colors">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================= -->
+  <!-- FOOTER CTA BANNER                                                       -->
+  <!-- ======================================================================= -->
+  <footer id="sec-footer" class="bg-[#FEF9C3] border-t-4 border-yellow-300 py-14 px-4 sm:px-6 lg:px-10">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+      <div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-royal leading-snug">
+          Have a project in mind?<br/>
+          Let's build <span class="font-sans font-extrabold text-zinc-900 underline decoration-royal decoration-4 underline-offset-4">something amazing together!</span>
+        </h2>
+      </div>
+
+      <div class="flex flex-col items-start lg:items-end gap-3">
+        <div class="flex flex-wrap items-center gap-3">
+          <button type="button" id="copy-email-btn" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-royal text-white text-sm sm:text-base font-bold shadow-md hover:bg-zinc-900 transition-colors cursor-pointer">
+            <span>Copy Email: wipavee.pin@gmail.com</span>
+            <span>📋</span>
+          </button>
+          <a href="#sec-top" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white border-[1.5px] border-zinc-900 text-sm font-bold text-zinc-900 hover:bg-zinc-900 hover:text-white transition-colors">
+            Back to Top ↑
+          </a>
+        </div>
+        <p class="text-xs sm:text-sm font-bold text-zinc-800">
+          Canan · 083-085-5587 · <a href="https://github.com/wipaveenan" target="_blank" rel="noopener noreferrer" class="text-royal hover:underline">github.com/wipaveenan</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-zinc-950/85 backdrop-blur-sm p-4 sm:p-8 flex items-center justify-center" role="dialog" aria-modal="true">
+    <div class="relative max-w-5xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl">
+      <div class="flex items-center justify-between px-5 py-3.5 border-b border-zinc-200">
+        <p id="lightbox-caption" class="text-sm font-bold text-zinc-900 truncate pr-4"></p>
+        <button id="lightbox-close" type="button" class="w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-900 hover:text-white font-bold flex items-center justify-center transition-colors">✕</button>
+      </div>
+      <div class="p-4 bg-zinc-100 flex items-center justify-center max-h-[80vh]">
+        <img id="lightbox-img" src="" alt="Preview" class="max-h-[72vh] w-auto object-contain rounded-lg"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden px-5 py-3 rounded-xl bg-zinc-900 text-white text-sm font-bold shadow-xl">
+    ✅ Copied wipavee.pin@gmail.com to clipboard!
+  </div>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+    }
+
+    // Scroll Reveal Observer
+    const revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      revealEls.forEach((el) => obs.observe(el));
+    } else {
+      revealEls.forEach((el) => el.classList.add('is-visible'));
+    }
+
+    // Lightbox Functions
+    const modal = document.getElementById('lightbox-modal');
+    const modalImg = document.getElementById('lightbox-img');
+    const modalCap = document.getElementById('lightbox-caption');
+    const modalClose = document.getElementById('lightbox-close');
+
+    function openLightbox(src, caption) {
+      if (!modal || !modalImg || !modalCap) return;
+      modalImg.src = src;
+      modalCap.textContent = caption || '';
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    document.querySelectorAll('[data-lightbox-src]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        openLightbox(btn.getAttribute('data-lightbox-src'), btn.getAttribute('data-lightbox-cap'));
+      });
+    });
+
+    function closeLightbox() {
+      if (!modal) return;
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+    if (modalClose) modalClose.addEventListener('click', closeLightbox);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeLightbox();
+      });
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Copy Email with Fallback
+    const copyBtn = document.getElementById('copy-email-btn');
+    const toast = document.getElementById('toast');
+    if (copyBtn && toast) {
+      copyBtn.addEventListener('click', async () => {
+        const email = 'wipavee.pin@gmail.com';
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(email);
+          } else {
+            throw new Error('fallback');
+          }
+        } catch (err) {
+          const ta = document.createElement('textarea');
+          ta.value = email;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 2600);
+      });
+    }
+  </script>
+</body>
+</html>
